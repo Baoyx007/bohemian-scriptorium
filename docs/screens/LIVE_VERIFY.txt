@@ -1,0 +1,8 @@
+Live URL: https://baoyx007.github.io/bohemian-scriptorium/
+Verified 2026-11-09 SGT via:
+- GitHub Actions run 42560332528: success (build + deploy)
+- Deployment 7646805375 status: success
+- External WebFetch of HTML: title Bohemian Scriptorium, Demo Mode copy present
+- External WebFetch of JS asset /bohemian-scriptorium/assets/index-CgR3-ecK.js: 200, React 19 bundle
+Box curl/Playwright to github.io fails TLS through sandbox fake-IP (198.18.0.x).
+live-site.png is the same production dist/ build served locally for visual capture.
