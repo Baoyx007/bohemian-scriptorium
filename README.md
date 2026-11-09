@@ -2,7 +2,7 @@
 
 Medieval Bohemia–themed **static** web app for **Kiroween 2026** (**Resurrection**).
 
-Demo: GitHub Pages at `https://baoyx007.github.io/bohemian-scriptorium/` (after you push and enable Pages).
+**Live demo:** https://baoyx007.github.io/bohemian-scriptorium/
 
 ## What it does
 
