@@ -1,0 +1,16 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Remind honesty disclaimer on UI edits",
+      "description": "When manuscript or result UI files change, inject a reminder to keep the AI-reconstruction disclaimer and honesty note visible.",
+      "trigger": "PostFileSave",
+      "matcher": "src/components/.*\\.(ts|tsx)$",
+      "enabled": true,
+      "action": {
+        "type": "agent",
+        "prompt": "A UI component was just saved. Verify that any view showing Illuminate or Resurrect results still displays (1) the persistent AI-reconstruction disclaimer and (2) the honesty note when present. Do not remove those labels. Avoid Kingdom Come: Deliverance names or assets."
+      }
+    }
+  ]
+}

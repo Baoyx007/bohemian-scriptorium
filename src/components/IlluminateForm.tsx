@@ -1,0 +1,56 @@
+import { ILLUMINATE_LIMIT, type TargetLanguage } from '../providers/types'
+
+interface Props {
+  text: string
+  targetLanguage: TargetLanguage
+  busy: boolean
+  error: string | null
+  onTextChange: (value: string) => void
+  onLanguageChange: (value: TargetLanguage) => void
+  onSubmit: () => void
+}
+
+export function IlluminateForm({
+  text,
+  targetLanguage,
+  busy,
+  error,
+  onTextChange,
+  onLanguageChange,
+  onSubmit,
+}: Props) {
+  return (
+    <section className="panel" aria-label="Illuminate form">
+      <label className="field">
+        <span>Modern Chinese or English</span>
+        <textarea
+          value={text}
+          onChange={(e) => onTextChange(e.target.value)}
+          rows={6}
+          maxLength={ILLUMINATE_LIMIT + 50}
+          placeholder="Kind lord, look kindly on this poor town waiting for spring light…"
+          aria-label="Modern text to illuminate"
+        />
+        <span className="meter">
+          {text.length}/{ILLUMINATE_LIMIT}
+        </span>
+      </label>
+      <label className="field">
+        <span>Target language</span>
+        <select
+          value={targetLanguage}
+          onChange={(e) => onLanguageChange(e.target.value as TargetLanguage)}
+          aria-label="Target archaic language"
+        >
+          <option value="old-czech">Old Czech</option>
+          <option value="latin">Latin</option>
+          <option value="middle-english">Middle English</option>
+        </select>
+      </label>
+      {error ? <p className="error">{error}</p> : null}
+      <button type="button" disabled={busy} onClick={onSubmit} aria-label="Illuminate manuscript">
+        {busy ? 'Scribing…' : 'Illuminate manuscript'}
+      </button>
+    </section>
+  )
+}

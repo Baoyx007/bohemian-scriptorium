@@ -1,0 +1,35 @@
+{
+  "name": "bohemian-scriptorium",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:property": "vitest run tests/*.property.ts",
+    "lint": "oxlint src tests"
+  },
+  "dependencies": {
+    "html-to-image": "^1.11.13",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "fast-check": "^4.3.0",
+    "jsdom": "^27.0.1",
+    "oxlint": "^1.90.0",
+    "typescript": "~5.9.3",
+    "vite": "^8.3.6",
+    "vitest": "^4.0.8"
+  }
+}

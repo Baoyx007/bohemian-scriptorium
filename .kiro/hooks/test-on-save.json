@@ -1,0 +1,17 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Run unit tests on TypeScript save",
+      "description": "After substantive TS/TSX saves under src/ or tests/, run Vitest once. Intended for Grok implementation sessions; Kiro scaffold tasks may leave this failing until Grok fills in tests.",
+      "trigger": "PostFileSave",
+      "matcher": "(src|tests)/.*\\.(ts|tsx)$",
+      "enabled": true,
+      "timeout": 120,
+      "action": {
+        "type": "command",
+        "command": "npm test -- --run --reporter=dot"
+      }
+    }
+  ]
+}

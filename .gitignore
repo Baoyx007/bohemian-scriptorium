@@ -1,0 +1,16 @@
+node_modules/
+dist/
+coverage/
+.vercel/
+.wrangler/
+bun.lockb
+.env
+.env.*
+!.env.example
+npm-debug.log*
+.DS_Store
+*.local
+.idea/
+.vscode/
+
+# IMPORTANT for Kiroween: do NOT ignore .kiro/
