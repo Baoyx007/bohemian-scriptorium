@@ -15,8 +15,7 @@ export const SAMPLES: SampleDoc[] = [
     title: 'Ave Maria (Latin prayer)',
     languageLabel: 'Latin',
     text: 'Ave Maria, gratia plena, Dominus tecum. Benedicta tu in mulieribus, et benedictus fructus ventris tui, Iesus.',
-    attribution:
-      'Traditional Latin prayer; text in the public domain.',
+    attribution: 'Traditional Latin prayer; text in the public domain.',
     license: 'public-domain',
   },
   {
@@ -35,6 +34,22 @@ export const SAMPLES: SampleDoc[] = [
     text: 'Hospodine, pomiluj ny! / Jesu Kriste, pomiluj ny! / Ty, spase vseho mira, / spasiž ny i uslyšiž.',
     attribution:
       'Medieval Bohemian hymn tradition (Hospodine, pomiluj ny); public domain text.',
+    license: 'public-domain',
+  },
+  {
+    id: 'pater-noster',
+    title: 'Pater Noster (opening)',
+    languageLabel: 'Latin',
+    text: 'Pater noster, qui es in caelis, sanctificetur nomen tuum.',
+    attribution: 'Lord’s Prayer (Latin liturgy); public domain.',
+    license: 'public-domain',
+  },
+  {
+    id: 'beowulf-hwat',
+    title: 'Beowulf — opening lines',
+    languageLabel: 'Old English',
+    text: 'Hwæt! We Gardena in geardagum, þeodcyninga þrym gefrunon,',
+    attribution: 'Beowulf; public domain Old English epic.',
     license: 'public-domain',
   },
 ]

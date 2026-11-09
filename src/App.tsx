@@ -6,6 +6,7 @@ import { ManuscriptPage } from './components/ManuscriptPage'
 import { ModeTabs } from './components/ModeTabs'
 import { ResurrectForm } from './components/ResurrectForm'
 import { SettingsPanel } from './components/SettingsPanel'
+import { ILLUMINATE_DEMOS } from './lib/demoFixtures'
 import { getSample } from './lib/samples'
 import { createProvider, resolveRuntimeMode } from './providers/factory'
 import { ScribeHttpError } from './providers/xaiBrowser'
@@ -19,7 +20,7 @@ import { validateClientInput } from './lib/validate'
 import './styles/app.css'
 
 const DEFAULT_ILLUMINATE =
-  'Kind lord, please look with mercy on this poor town that waits in winter darkness for the light of spring.'
+  '春天来了，请怀着慈悲照看这座贫苦的小镇，它在冬夜的黑暗里等候春光。'
 
 export default function App() {
   const [mode, setMode] = useState<Mode>('illuminate')
@@ -29,7 +30,7 @@ export default function App() {
   const [illuminateText, setIlluminateText] = useState(DEFAULT_ILLUMINATE)
   const [resurrectText, setResurrectText] = useState('')
   const [targetLanguage, setTargetLanguage] =
-    useState<TargetLanguage>('latin')
+    useState<TargetLanguage>('old-czech')
   const [formError, setFormError] = useState<string | null>(null)
   const [toast, setToast] = useState<string | null>(null)
   const [busy, setBusy] = useState(false)
@@ -47,9 +48,7 @@ export default function App() {
   const ossuary =
     /kutna|kutná|ossuary/i.test(illuminateText) ||
     /kutna|kutná|ossuary/i.test(resurrectText)
-  const candle =
-    new URLSearchParams(window.location.search).get('candle') === '1' ||
-    new Date().getHours() < 5
+  const candle = true
 
   async function run() {
     setFormError(null)
@@ -114,7 +113,8 @@ export default function App() {
       <p className="banner" role="note">
         Outputs are <strong>AI reconstructions</strong>, not scholarly
         translations. Demo Mode needs no key. Optional Live Mode uses your own
-        xAI key in this browser only.
+        xAI key in this browser only. Try typing <em>emet</em> or{' '}
+        <em>kutna</em> for marginalia.
       </p>
 
       {golem ? (
@@ -134,6 +134,12 @@ export default function App() {
           error={formError}
           onTextChange={setIlluminateText}
           onLanguageChange={setTargetLanguage}
+          onPickDemo={(id) => {
+            const demo = ILLUMINATE_DEMOS.find((d) => d.id === id)
+            if (!demo) return
+            setIlluminateText(demo.input)
+            setTargetLanguage(demo.targetLanguage)
+          }}
           onSubmit={() => void run()}
         />
       ) : (
@@ -155,6 +161,7 @@ export default function App() {
           result={illuminateResult}
           candle={candle}
           ossuary={ossuary}
+          golem={golem}
         />
       ) : null}
       {mode === 'resurrect' && resurrectResult ? (

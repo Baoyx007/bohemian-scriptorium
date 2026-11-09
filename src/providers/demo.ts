@@ -7,9 +7,8 @@ export class DemoProvider implements LlmProvider {
   async complete(request: ScribeRequest): Promise<ScribeResult> {
     if (request.mode === 'illuminate') {
       const lang = request.targetLanguage ?? 'latin'
-      return demoIlluminate(lang)
+      return demoIlluminate(lang, request.text)
     }
-    const matched = /ave\s+maria/i.test(request.text)
-    return demoResurrect(matched)
+    return demoResurrect(request.text)
   }
 }
