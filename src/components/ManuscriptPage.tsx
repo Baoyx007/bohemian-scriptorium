@@ -46,6 +46,11 @@ export function ManuscriptPage({ result, candle, ossuary, golem }: Props) {
             {rest}
           </p>
           <p className="lang-tag">{labelFor(result.targetLanguage)}</p>
+          <div className="colophon" aria-hidden="true">
+            <span className="colophon-ornament">❧</span>
+            <p>Scriptum Pragae, anno Domini MMXXVI</p>
+            <span className="colophon-ornament">❧</span>
+          </div>
           <WaxSeal />
         </div>
       </article>
