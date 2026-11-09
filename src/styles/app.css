@@ -1,8 +1,9 @@
 :root {
   --parchment: #f3e6c8;
   --parchment-deep: #e8d4a8;
-  --ink: #2a1a12;
-  --oxblood: #7a1f1f;
+  --ink: #2b1a10;
+  --oxblood: #8b1a1a;
+  --rubric: #8b1a1a;
   --gold: #c9a227;
   --border: #5c3b24;
   --cream: #fff8e7;
@@ -149,6 +150,23 @@ button:disabled { opacity: 0.6; cursor: wait; }
 .result .honesty { color: #f0d8b0; }
 .result .muted { color: #d2b48c; font-size: 0.9rem; }
 
+/* Parchment leaf must NOT inherit panel light text */
+.manuscript,
+.manuscript .border,
+.manuscript p,
+.manuscript .body,
+.manuscript .rubric-line,
+.manuscript .lang-tag {
+  color: #2b1a10 !important;
+}
+.manuscript .rubric-line {
+  color: #8b1a1a !important;
+}
+.manuscript .lang-tag {
+  color: #5c3b24 !important;
+}
+
+
 .field { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 0.85rem; color: #f0dcc0; }
 .field textarea, .field input, .field select {
   font: inherit;
@@ -168,31 +186,36 @@ button:disabled { opacity: 0.6; cursor: wait; }
 /* —— Manuscript leaf —— */
 .manuscript {
   position: relative;
-  color: var(--ink);
+  color: #2b1a10;
   border-radius: 6px;
-  padding: 1.1rem;
+  padding: 1.35rem 1.25rem 1.6rem;
   overflow: hidden;
-  background-color: var(--parchment);
+  max-width: 34rem;
+  margin: 0.5rem auto 0.75rem;
+  min-height: 28rem;
+  aspect-ratio: 3 / 4;
+  background-color: #ecd7a6;
   background-image:
+    /* ruled guide lines */
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 1.85rem,
+      rgba(90, 55, 25, 0.12) 1.85rem,
+      rgba(90, 55, 25, 0.12) calc(1.85rem + 1px)
+    ),
     radial-gradient(ellipse at 20% 10%, rgba(255,255,255,0.35), transparent 45%),
-    radial-gradient(ellipse at 80% 90%, rgba(120, 80, 30, 0.12), transparent 40%),
+    radial-gradient(ellipse at 80% 90%, rgba(120, 80, 30, 0.14), transparent 40%),
     repeating-linear-gradient(
       0deg,
       transparent,
       transparent 2px,
-      rgba(90, 60, 30, 0.03) 2px,
-      rgba(90, 60, 30, 0.03) 3px
+      rgba(90, 60, 30, 0.035) 2px,
+      rgba(90, 60, 30, 0.035) 3px
     ),
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 3px,
-      rgba(90, 60, 30, 0.025) 3px,
-      rgba(90, 60, 30, 0.025) 4px
-    ),
-    linear-gradient(135deg, #f7ebcf 0%, #ecd7a6 48%, #e2c792 100%);
+    linear-gradient(160deg, #f7ebcf 0%, #ecd7a6 45%, #e2c792 100%);
   box-shadow:
-    0 10px 28px rgba(0,0,0,0.45),
+    0 12px 32px rgba(0,0,0,0.45),
     inset 0 0 60px rgba(120, 70, 20, 0.12);
 }
 .manuscript.candle,
@@ -226,24 +249,30 @@ button:disabled { opacity: 0.6; cursor: wait; }
   position: relative;
   z-index: 2;
   border: none;
-  padding: 1.75rem 1.5rem 2.75rem;
-  min-height: 220px;
+  padding: 2.4rem 2.1rem 3.4rem;
+  min-height: 100%;
+  height: 100%;
+  color: #2b1a10;
 }
 
 .rubric-line {
-  color: var(--oxblood);
-  font-size: 0.85rem;
-  letter-spacing: 0.08em;
+  color: #8b1a1a !important;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin: 0 0 0.75rem;
+  margin: 0 0 1.1rem;
   font-weight: 700;
+  font-family: 'IM Fell English', serif;
 }
 
 .body {
-  font-size: 1.28rem;
-  line-height: 1.75;
+  font-family: 'UnifrakturMaguntia', 'IM Fell English', serif;
+  font-size: 1.35rem;
+  line-height: 1.9;
   margin: 0;
-  color: var(--ink);
+  color: #2b1a10 !important;
+  text-align: justify;
+  hyphens: auto;
 }
 
 .drop {
@@ -274,10 +303,12 @@ button:disabled { opacity: 0.6; cursor: wait; }
 }
 
 .lang-tag {
-  margin: 1.1rem 0 0;
+  margin: 1.6rem 0 0;
   font-size: 0.85rem;
-  color: #6b5344;
+  color: #5c3b24 !important;
   clear: both;
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
 }
 
 .wax-seal {
@@ -364,6 +395,8 @@ button:disabled { opacity: 0.6; cursor: wait; }
 
 @media (max-width: 400px) {
   .tabs { flex-direction: column; }
-  .body { font-size: 1.1rem; }
+  .manuscript { aspect-ratio: auto; min-height: 22rem; max-width: 100%; }
+  .body { font-size: 1.15rem; line-height: 1.8; }
+  .border { padding: 1.6rem 1.2rem 2.8rem; }
   .drop-gold { font-size: 2.8rem; min-width: 2.8rem; min-height: 2.8rem; }
 }
